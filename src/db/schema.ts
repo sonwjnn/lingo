@@ -11,24 +11,24 @@ import {
 } from 'drizzle-orm/pg-core'
 import type { AdapterAccount } from 'next-auth/adapters'
 
-export const users = pgTable('users', {
+export const users = pgTable('user', {
   id: uuid('id').primaryKey().defaultRandom(),
   name: text('name'),
-  email: text('email').notNull(),
+  email: text('email').unique().notNull(),
   password: text('password'),
-  emailVerified: timestamp('email_verified', { mode: 'date' }),
+  emailVerified: timestamp('emailVerified', { mode: 'date' }),
   image: text('image'),
 })
 
 export const accounts = pgTable(
-  'accounts',
+  'account',
   {
-    userId: uuid('user_id')
+    userId: uuid('userId')
       .notNull()
       .references(() => users.id, { onDelete: 'cascade' }),
     type: text('type').$type<AdapterAccount['type']>().notNull(),
     provider: text('provider').notNull(),
-    providerAccountId: text('provider_account_id').notNull(),
+    providerAccountId: text('providerAccountId').notNull(),
     refresh_token: text('refresh_token'),
     access_token: text('access_token'),
     expires_at: integer('expires_at'),
@@ -44,34 +44,22 @@ export const accounts = pgTable(
   })
 )
 
-export const sessions = pgTable('sessions', {
-  sessionToken: text('session_token').primaryKey(),
-  userId: uuid('user_id')
+export const sessions = pgTable('session', {
+  sessionToken: text('sessionToken').notNull().primaryKey(),
+  userId: uuid('userId')
     .notNull()
     .references(() => users.id, { onDelete: 'cascade' }),
   expires: timestamp('expires', { mode: 'date' }).notNull(),
 })
 
 export const verificationTokens = pgTable(
-  'verification_tokens',
+  'verificationToken',
   {
-    email: text('email').notNull(),
+    identifier: text('identifier').notNull(),
     token: text('token').notNull(),
     expires: timestamp('expires', { mode: 'date' }).notNull(),
   },
   vt => ({
-    compoundKey: primaryKey({ columns: [vt.email, vt.token] }),
-  })
-)
-
-export const passwordResetTokens = pgTable(
-  'password_reset_tokens',
-  {
-    email: text('email').notNull(),
-    token: text('token').notNull(),
-    expires: timestamp('expires', { mode: 'date' }).notNull(),
-  },
-  prt => ({
-    compoundKey: primaryKey({ columns: [prt.email, prt.token] }),
+    compoundKey: primaryKey({ columns: [vt.identifier, vt.token] }),
   })
 )

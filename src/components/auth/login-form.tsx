@@ -53,7 +53,6 @@ export const LoginForm = ({}: LoginFormProps) => {
     startTransition(() => {
       login(values, callbackUrl)
         .then(data => {
-          console.log(data)
           if (data?.error) {
             form.reset()
             setError(data.error)
