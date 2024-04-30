@@ -1,13 +1,13 @@
 import { LoginButton } from '@/components/auth/login-button'
 import { UserButton } from '@/components/auth/user-button'
 import { Button } from '@/components/ui/button'
-import { getSelf } from '@/data/auth'
+import { currentUser } from '@/lib/auth'
 import Image from 'next/image'
 
 interface HeaderProps {}
 
 export const Header = async ({}: HeaderProps) => {
-  const user = await getSelf()
+  const user = await currentUser()
 
   return (
     <header className="h-20 w-full border-b-2 border-slate-200 px-4">

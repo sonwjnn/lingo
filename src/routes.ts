@@ -37,5 +37,5 @@ export const apiWebhooksPrefix = '/api/webhooks'
  * The default redirect path after logging in.
  * @type {string}
  */
-export const DEFAULT_LOGIN_REDIRECT = '/'
+export const DEFAULT_LOGIN_REDIRECT = '/learn'
 export const DEFAULT_SETTINGS_REDIRECT = '/settings/profile'
