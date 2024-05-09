@@ -19,15 +19,15 @@ export const UserButton = () => {
       <DropdownMenuTrigger>
         <Avatar className="transition hover:brightness-110">
           <AvatarImage src={user?.image || ''} />
-          <AvatarFallback className="bg-sky-500">
-            <UserRound className="text-white" />
+          <AvatarFallback className="bg-zinc-200">
+            <UserRound className="text-neutral-900" />
           </AvatarFallback>
         </Avatar>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-40" align="end">
         <LogoutButton>
           <DropdownMenuItem>
-            <LogOut className="mr-2 h-4 w-4" />
+            <LogOut className="mr-2 size-4" />
             Logout
           </DropdownMenuItem>
         </LogoutButton>

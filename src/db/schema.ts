@@ -17,7 +17,7 @@ export const users = pgTable('user', {
   email: text('email').unique().notNull(),
   password: text('password'),
   emailVerified: timestamp('emailVerified', { mode: 'date' }),
-  image: text('image'),
+  image: text('image').notNull().default('/images/mascot.svg'),
 })
 
 export const accounts = pgTable(
@@ -186,8 +186,6 @@ export const challengeProgressRelations = relations(
 )
 export const userProgress = pgTable('user_progress', {
   userId: uuid('user_id').primaryKey(),
-  userName: text('user_name').notNull().default('User'),
-  userImageSrc: text('user_image_src').notNull().default('/images/mascot.svg'),
   activeCourseId: uuid('active_course_id').references(() => courses.id, {
     onDelete: 'cascade',
   }),

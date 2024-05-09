@@ -47,7 +47,7 @@ export const Footer = () => {
         </Button>
         <Button size="lg" variant="ghost" className="w-full">
           <Image
-            src="/images/es.svg"
+            src="/images/countries/es.svg"
             alt="Spanish"
             height={32}
             width={40}

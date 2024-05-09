@@ -1,14 +1,12 @@
+import { courses } from '@/db/schema'
 import { InfinityIcon } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 
 import { Button } from './ui/button'
 
-// import { courses } from "@/database/schema";
-
 type Props = {
-  // activeCourse: typeof courses.$inferSelect;
-  activeCourse: { imageSrc: string; title: string }
+  activeCourse: typeof courses.$inferSelect
   hearts: number
   points: number
   hasActiveSubscription: boolean
@@ -55,7 +53,7 @@ export const UserProgress = ({
             className="mr-2"
           />
           {hasActiveSubscription ? (
-            <InfinityIcon className="h-4 w-4 stroke-[3]" />
+            <InfinityIcon className="size-4 stroke-[3]" />
           ) : (
             hearts
           )}

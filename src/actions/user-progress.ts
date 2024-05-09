@@ -29,8 +29,6 @@ export const upsertUserProgress = async (courseId: string) => {
   if (existingUserProgress) {
     await db.update(userProgress).set({
       activeCourseId: courseId,
-      userName: user.name || 'User',
-      userImageSrc: user.image || '/mascot.svg',
     })
 
     revalidatePath('/courses')
@@ -41,8 +39,6 @@ export const upsertUserProgress = async (courseId: string) => {
   await db.insert(userProgress).values({
     userId: user.id,
     activeCourseId: courseId,
-    userName: user.name || 'User',
-    userImageSrc: user.image || '/mascot.svg',
   })
 
   revalidatePath('/courses')

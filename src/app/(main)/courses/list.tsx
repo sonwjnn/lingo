@@ -9,7 +9,7 @@ import { toast } from 'sonner'
 import { Card } from './card'
 
 type Props = {
-  courses: (typeof courses.$inferSelect)[] //we use $inferSelect to get the type of the select query
+  courses: (typeof courses.$inferSelect)[]
   activeCourseId?: typeof userProgress.$inferSelect.activeCourseId
 }
 

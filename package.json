@@ -7,12 +7,12 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "db:studio": "npx drizzle-kit studio",
-    "db:push": "npx drizzle-kit push:pg",
-    "db:generate": "npx drizzle-kit generate:pg",
-    "db:seed": "tsx ./scripts/seed.ts",
-    "db:prod": "tsx ./scripts/prod.ts",
-    "db:reset": "tsx ./scripts/reset.ts"
+    "db:studio": "bunx drizzle-kit studio",
+    "db:push": "bunx drizzle-kit push:pg",
+    "db:generate": "bunx drizzle-kit generate:pg",
+    "db:seed": "bun ./src/scripts/seed.ts",
+    "db:prod": "bun ./src/scripts/prod.ts",
+    "db:reset": "bun ./src/scripts/reset.ts"
   },
   "dependencies": {
     "@auth/drizzle-adapter": "^1.0.1",
@@ -37,6 +37,7 @@
     "next-auth": "^5.0.0-beta.17",
     "next-themes": "^0.3.0",
     "react": "^18",
+    "react-circular-progressbar": "^2.1.0",
     "react-dom": "^18",
     "react-hook-form": "^7.51.3",
     "sonner": "^1.4.41",
