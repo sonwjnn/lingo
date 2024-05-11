@@ -1,36 +1,36 @@
-import Image from "next/image";
-
-import { cn } from "@/lib/utils";
+import { cn } from '@/lib/utils'
+import Image from 'next/image'
 
 type Props = {
-  value: number;
-  variant: "points" | "hearts";
-};
+  value: number
+  variant: 'points' | 'hearts'
+}
 
 export const ResultCard = ({ value, variant }: Props) => {
-  const imageSrc = variant === "hearts" ? "/heart.svg" : "/points.svg";
+  const imageSrc =
+    variant === 'hearts' ? '/images/heart.svg' : '/images/points.svg'
   return (
     <div
       className={cn(
-        "rounded-2xl border-2 w-full",
-        variant === "points" && "bg-orange-400 border-orange-400",
-        variant === "hearts" && "bg-rose-400 border-rose-400",
+        'w-full rounded-2xl border-2',
+        variant === 'points' && 'border-orange-400 bg-orange-400',
+        variant === 'hearts' && 'border-rose-400 bg-rose-400'
       )}
     >
       <div
         className={cn(
-          "p-1.5 text-white rounded-t-xl font-bold text-center uppercase text-xs",
-          variant === "hearts" && "bg-rose-500",
-          variant === "points" && "bg-orange-500",
+          'rounded-t-xl p-1.5 text-center text-xs font-bold uppercase text-white',
+          variant === 'hearts' && 'bg-rose-500',
+          variant === 'points' && 'bg-orange-500'
         )}
       >
-        {variant === "hearts" ? "Hearts Left" : "Total XP"}
+        {variant === 'hearts' ? 'Hearts Left' : 'Total XP'}
       </div>
       <div
         className={cn(
-          "rounded-2xl bg-white items-center flex justify-center p-6 font-bold text-lg",
-          variant === "points" && "text-orange-400",
-          variant === "hearts" && "text-rose-400",
+          'flex items-center justify-center rounded-2xl bg-white p-6 text-lg font-bold',
+          variant === 'points' && 'text-orange-400',
+          variant === 'hearts' && 'text-rose-400'
         )}
       >
         <Image
@@ -43,5 +43,5 @@ export const ResultCard = ({ value, variant }: Props) => {
         {value}
       </div>
     </div>
-  );
-};
+  )
+}

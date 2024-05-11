@@ -49,10 +49,12 @@ export const Quiz = ({
 
   const { width, height } = useWindowSize()
   const router = useRouter()
-  const [finishAudio] = useAudio({ src: '/finish.mp3', autoPlay: true })
-  const [correctAudio, _c, correctControls] = useAudio({ src: '/correct.wav' })
+  const [finishAudio] = useAudio({ src: '/sounds/finish.mp3', autoPlay: true })
+  const [correctAudio, _c, correctControls] = useAudio({
+    src: '/sounds/correct.wav',
+  })
   const [incorrectAudio, _i, incorrectControls] = useAudio({
-    src: '/incorrect.wav',
+    src: '/sounds/incorrect.wav',
   })
 
   const [isPending, startTransition] = useTransition()
