@@ -185,7 +185,9 @@ export const challengeProgressRelations = relations(
   })
 )
 export const userProgress = pgTable('user_progress', {
-  userId: uuid('user_id').primaryKey(),
+  userId: uuid('user_id')
+    .primaryKey()
+    .references(() => users.id, { onDelete: 'cascade' }),
   activeCourseId: uuid('active_course_id').references(() => courses.id, {
     onDelete: 'cascade',
   }),

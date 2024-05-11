@@ -1,8 +1,5 @@
 import { getSelf } from '@/data/auth'
 import db from '@/db/drizzle'
-import { eq } from 'drizzle-orm'
-import { cache } from 'react'
-
 import {
   challengeProgress,
   courses,
@@ -10,7 +7,9 @@ import {
   units,
   userProgress,
   userSubscription,
-} from './schema'
+} from '@/db/schema'
+import { eq } from 'drizzle-orm'
+import { cache } from 'react'
 
 export const getCourses = cache(async () => {
   const data = await db.query.courses.findMany()
@@ -243,4 +242,22 @@ export const getUserSubscription = cache(async () => {
     data.stripeCurrentPeriodEnd?.getTime()! + DAY_IN_MS > Date.now()
 
   return { ...data, isActive: !!isActive }
+})
+
+export const getTopTenUsers = cache(async () => {
+  const self = await getSelf()
+
+  if (!self || !self.id) {
+    return []
+  }
+
+  const data = await db.query.userProgress.findMany({
+    orderBy: (userProgress, { desc }) => [desc(userProgress.points)],
+    limit: 10,
+    with: {
+      user: true,
+    },
+  })
+
+  return data
 })

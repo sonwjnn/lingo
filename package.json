@@ -8,8 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "db:studio": "bunx drizzle-kit studio",
-    "db:push": "bunx drizzle-kit push:pg",
-    "db:generate": "bunx drizzle-kit generate:pg",
+    "db:push": "bunx drizzle-kit push",
+    "db:generate": "bunx drizzle-kit generate",
     "db:seed": "bun ./src/scripts/seed.ts",
     "db:prod": "bun ./src/scripts/prod.ts",
     "db:reset": "bun ./src/scripts/reset.ts"
@@ -23,6 +23,7 @@
     "@radix-ui/react-dropdown-menu": "^2.0.6",
     "@radix-ui/react-label": "^2.0.2",
     "@radix-ui/react-progress": "^1.0.3",
+    "@radix-ui/react-separator": "^1.0.3",
     "@radix-ui/react-slot": "^1.0.2",
     "@trivago/prettier-plugin-sort-imports": "^4.3.0",
     "@types/bcryptjs": "^2.4.6",
